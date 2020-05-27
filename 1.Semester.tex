@@ -1,0 +1,29 @@
+\documentclass{article}
+\usepackage{Stundenplan}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\Ueberschrift}{1.Semester}
+\renewcommand{\planname}{UHH -- Computing in Science - FB Biochemie}
+
+\begin{document}
+  \begin{plan}
+    % Chemie Teil
+    \VorlEins \montag {8}{15}{90}{Allgemeine Chemie\\\ \\MLK3, Großer Hörsaal}
+    \Uebung \montag {10}{15}{90}{Allgemeine Chemie\\\ \\Sem.Raum S1  IAACh}
+    \Seminar \montag {12}{15}{90}{CiS - Proseminar\\\ \\ZBH Raum 16}
+    \VorlEins \donnerstag {12}{15}{90}{Allgemeine Chemie\\\ \\MLK3, Großer Hörsaal}
+    \VorlEins \freitag {10}{15}{90}{Physikalische Chemie 1\\\ \\Hörsaal A Chemie}
+    \Uebung \dienstag {12}{15}{45}{Physikalische Chemie 1\\\ \\Sem. Raum 160  IPhCh}
+    % Informatik Teil
+    \VorlZwei \mittwoch {14}{15}{90}{Softwareentwicklung 1\\\ \\Hörsaal A Chemie}
+    \Uebung \dienstag {14}{00}{180}{Softwareentwicklung 1\\\ \\Ikum Raum D-017}
+    % Mathe Teil
+    \VorlDrei \mittwoch {8}{15}{90}{Mathematik für\\Physiker 1\\\ \\ESA A}
+    \VorlDrei \freitag {8}{15}{90}{Mathematik für\\Physiker 1\\\ \\Erzwiss H}
+    \Uebung \mittwoch {10}{15}{90}{Mathematik für\\Physiker 1\\\ \\Geomatikum Raum 435}
+    \Tutorium \freitag {15}{15}{90}{Mathe 1 - Tutorium\\\ \\Ikum Raum F-009}
+    
+    % Test der einzelnen möglichen Farbgebungen in der Legende
+    \Legende{\LVorlEins\LVorlZwei\LVorlDrei\LUebung\LTutorium\LSeminar\LPrivat}
+  \end{plan}
+\end{document}

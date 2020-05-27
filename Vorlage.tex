@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{Stundenplan}
+\usepackage[utf8]{inputenc}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\Ueberschrift}{Mein X. Semester}
+\renewcommand{\planname}{UHH -- Computing in Science - FB Biochemie}
+
+\begin{document}
+  % Die Zeiten müssen jeweils in Minuten seit 08:00 angegeben werden...
+  % Beispiel 1: Vorlesung 1 ist 08:15-09:45 und dauert 90 Min -> "\VorlEins \montag {8}{15} {90}{Name - Vorlesung 1}"
+  % \<Veranstaltung> \<tag> {<Uhrzeit(HH)>}{<Uhrzeit(MM)>}{<Dauer(Min)>}{<Veranstaltungname>}
+  \begin{plan}
+    \VorlEins \montag {8}{15} {90}{Name - Vorlesung 1}
+    \VorlZwei \donnerstag {10}{15} {90}{Name - Vorlesung 2}
+    \Deadline \dienstag {12}{00} {15}{Onlinetest - \href{www.test.de}{Link}}
+    \VorlDrei \freitag {8}{15} {90}{Name - Vorlesung 2}
+    \Uebung \mittwoch {10}{15} {90}{Übung zu Vorlesung 1\\\ \\Lösung:\\ \href{mailto:max.mustermann@gmail.com}{E-Mail senden}}
+    
+    \Privat \dienstag{17}{00} {120}{Fitnessstudio}
+    % Test der einzelnen möglichen Farbgebungen in der Legende
+    \Legende{\LVorlEins\LVorlZwei\LVorlDrei\LUebung\LTutorium\LSeminar\LPrivat}
+  \end{plan}
+\end{document}

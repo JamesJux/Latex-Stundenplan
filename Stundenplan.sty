@@ -1,0 +1,198 @@
+% Stundenplan.sty - LaTeX Einstellungen für Stundenpläne
+% Copyright (C) 2020  Dominick Labatz
+% Ursprünglich, aber mit großen Änderungen:
+% cvhplan.sty - LaTeX Settings for Time Schedules
+% Copyright (C) 2012, 2013, 2017, 2018  Peter Gerwinski
+% Hochschule Bochum -- Campus Velbert/Heiligenhaus
+%
+% This document is free software: you can redistribute it and/or
+% modify it under the terms of the GNU General Public License
+% as published by the Free Software Foundation, either version 3
+% of the License, or (at your option) any later version.
+%
+% This document is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this document.  If not, see <http://www.gnu.org/licenses/>.
+
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[paper=a4paper,landscape]{geometry}
+\usepackage[colornames,dvipsnames]{xcolor}
+\usepackage{ifthen}
+\usepackage{fp}
+
+\newboolean{mitWochenende}
+
+%% Hier ändern um Zwischen den Plänen mit Samstag und Sonntag umzuschalten...  %%
+%% Also 5 Tage vs. 7 Tage.                                                     %%
+\setboolean{mitWochenende}{false} 
+%%                                                                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\pdfpagewidth}{29.7cm}
+\setlength{\pdfpageheight}{21.0cm}
+\setlength{\textwidth}{28cm}
+\setlength{\textheight}{20cm}
+\setlength{\hoffset}{-3.75cm}
+\setlength{\voffset}{-3.75cm}
+\setlength{\voffset}{-1.95cm}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\unitlength}{1cm}
+
+\ifthenelse{\boolean{mitWochenende}}{
+    \newcommand{\montag}{0.9}
+    \newcommand{\dienstag}{4.75}
+    \newcommand{\mittwoch}{8.6}
+    \newcommand{\donnerstag}{12.45}
+    \newcommand{\freitag}{16.3}
+    \newcommand{\samstag}{20.15}
+    \newcommand{\sonntag}{24.0}
+  }{
+    \newcommand{\montag}{0.9}
+    \newcommand{\dienstag}{6.3}
+    \newcommand{\mittwoch}{11.7}
+    \newcommand{\donnerstag}{17.1}
+    \newcommand{\freitag}{22.5}
+  }
+
+\newcommand{\drawquarters}{
+  {
+    \put(28,19.85){\makebox(0,0)[tr]{\planname}}
+    \color[rgb]{0.8,0.8,0.8}
+    \multiput(1,0)(0,0.4){45}{\line(1,0){27}}
+  }
+  \put(1,-0.4){\line(1,0){27}}
+}
+
+\newcommand{\drawhours}{
+  \multiput(1,0)(0,1.6){12}{\line(1,0){27}}
+  \ifthenelse{\boolean{mitWochenende}}{
+    \multiput(1,-0.4)(3.85,0){8}{\line(0,1){18.0}}
+  }{
+    \multiput(1,-0.4)(5.4,0){6}{\line(0,1){18.0}}
+  }
+  \put(0.9,17.6){\makebox(0,0)[r]{8:00}}
+  \put(0.9,16.0){\makebox(0,0)[r]{9:00}}
+  \put(0.9,14.4){\makebox(0,0)[r]{10:00}}
+  \put(0.9,12.8){\makebox(0,0)[r]{11:00}}
+  \put(0.9,11.2){\makebox(0,0)[r]{12:00}}
+  \put(0.9,9.6){\makebox(0,0)[r]{13:00}}
+  \put(0.9,8.0){\makebox(0,0)[r]{14:00}}
+  \put(0.9,6.4){\makebox(0,0)[r]{15:00}}
+  \put(0.9,4.8){\makebox(0,0)[r]{16:00}}
+  \put(0.9,3.2){\makebox(0,0)[r]{17:00}}
+  \put(0.9,1.6){\makebox(0,0)[r]{18:00}}
+  \put(0.9,0.0){\makebox(0,0)[r]{19:00}}
+  \ifthenelse{\boolean{mitWochenende}}{
+    \put(2.92,17.7){\makebox(0,0)[b]{Montag}}
+    \put(6.77,17.7){\makebox(0,0)[b]{Dienstag}}
+    \put(10.62,17.7){\makebox(0,0)[b]{Mittwoch}}
+    \put(14.47,17.7){\makebox(0,0)[b]{Donnerstag}}
+    \put(18.32,17.7){\makebox(0,0)[b]{Freitag}}
+    \put(22.17,17.7){\makebox(0,0)[b]{Samstag}}
+    \put(26.02,17.7){\makebox(0,0)[b]{Sonntag}}
+  }{
+    \put(3.70,17.7){\makebox(0,0)[b]{Montag}}
+    \put(9.10,17.7){\makebox(0,0)[b]{Dienstag}}
+    \put(14.50,17.7){\makebox(0,0)[b]{Mittwoch}}
+    \put(19.90,17.7){\makebox(0,0)[b]{Donnerstag}}
+    \put(25.30,17.7){\makebox(0,0)[b]{Freitag}}
+  }
+}
+
+\ifthenelse{\boolean{mitWochenende}}{
+  \newlength{\colwidth}
+  \setlength{\colwidth}{3.85\unitlength}
+}{
+  \newlength{\colwidth}
+  \setlength{\colwidth}{5.4\unitlength}
+}
+\newlength{\hours}
+\setlength{\hours}{0.4\unitlength}
+\newlength{\quarters}
+\setlength{\quarters}{0.1\unitlength}
+\newlength{\minutes}
+\setlength{\minutes}{0.0266666\unitlength}
+
+\newcommand{\halfcol}[1]{\makebox[0.49\colwidth]{\hss#1\hss}}
+
+\newcommand{\activity}[6]{
+  \put(#2,17,6){
+    \begin{minipage}[t]{\colwidth}
+      \FPeval{\result}{((#3*60)+#4)-480}
+      \vspace*{\result\minutes}
+      \def\testl{#6}
+      \def\testr{\Cpause}
+      \ifx\testl\testr
+        \strut\vspace*{-11\minutes}
+      \else
+        \makebox(0,0)[tl]{\color{#6}\rule{\colwidth}{#5\minutes}}
+      \fi
+      \begin{center}
+        \setlength{\baselineskip}{15\minutes}\vspace*{-13.5\minutes}\par
+        #1
+      \end{center}
+    \end{minipage}
+  }
+}
+
+%% Definieren der verschiedenen Farben:
+\definecolor{CChemV}{rgb}{0.62,0.87,0.35}
+\definecolor{CMathV}{rgb}{0.80,0.80,0.80}
+\definecolor{CInfV}{rgb}{0.62,0.75,0.90}
+\definecolor{CUebung}{rgb}{1,0.87,0.68}
+\definecolor{DirtyYellow}{rgb}{0.90,0.88,0.45}
+\definecolor{LightOrange}{rgb}{1.0,0.85,0.45}
+\definecolor{CPrivat}{rgb}{0.7,0.7,1.0}
+\definecolor{Deadline}{rgb}{0.8,0.25,0.25}
+\definecolor{CHausaufgaben}{rgb}{0.5,0.7,0.5}
+
+%% Definieren von Farbbefehler um die Farben leichter aufzurufen
+\newcommand{\CMathV}{CMathV}
+\newcommand{\CChemV}{CChemV}
+\newcommand{\CInfV}{CInfV}
+\newcommand{\CUebung}{CUebung}
+\newcommand{\CTutorium}{DirtyYellow}
+\newcommand{\CSeminar}{LightOrange}
+\newcommand{\CHausaufgaben}{CHausaufgaben}
+\newcommand{\CPause}{white}
+\newcommand{\CDeadline}{Deadline}
+\newcommand{\CPrivat}{CPrivat}
+
+%% Legendendefinierung sodass man sie mit richtiger Farbe und Text als Legende auf dem Stundenplan setzen kann.
+\newcommand{\Legende}[1]{\put(28,19){\makebox(0,0)[r]{#1}}}
+\newcommand{\LVorlEins}{\colorbox{\CChemV}{Che\strut}}
+\newcommand{\LVorlZwei}{\colorbox{\CInfV}{Inf\strut}}
+\newcommand{\LVorlDrei}{\colorbox{\CMathV}{Mathe\strut}}
+\newcommand{\LVorlOnline}{\colorbox{\CMathV}{Online-Vorl.\strut}}
+\newcommand{\LUebung}{\colorbox{\CUebung}{Pflicht-Übung\strut}}
+\newcommand{\LTutorium}{\colorbox{\CTutorium}{Tutorium\strut}}
+\newcommand{\LSeminar}{\colorbox{\CSeminar}{Seminar\strut}}
+\newcommand{\LDeadline}{\colorbox{\CDeadline}{Deadline\strut}}
+\newcommand{\LHausaufgaben}{\colorbox{\CHausaufgaben}{Hausaufgaben\strut}}
+\newcommand{\LPrivat}{\colorbox{\CPrivat}{Privat\strut}}
+
+%% Definieren der eigentlichen Aktivitäten.
+\def\VorlEins#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CChemV}}
+\def\VorlZwei#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CInfV}}
+\def\VorlDrei#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CMathV}}
+\def\VorlOnline#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CMathV}}
+\def\Uebung#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CUebung}}
+\def\Tutorium#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CTutorium}}
+\def\Seminar#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CSeminar}}
+\def\Hausaufgaben#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CHausaufgaben}}
+\def\Pause#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CPause}}
+\def\Deadline#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CDeadline}}
+\def\Privat#1#2#3#4#5{\activity{#5}{#1}{#2}{#3}{#4}{\CPrivat}}
+
+\newcommand{\planname}{}
+\newenvironment{plan}{\section*{\Ueberschrift\strut}\begin{picture}(28,18.5)\drawquarters}{\drawhours\end{picture}\clearpage}
