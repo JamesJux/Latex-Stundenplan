@@ -21,12 +21,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[german]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{helvet}
+\usepackage{helvet,ifthen,fp}
 \renewcommand*\familydefault{\sfdefault}
 \usepackage[paper=a4paper,landscape]{geometry}
 \usepackage[colornames,dvipsnames]{xcolor}
-\usepackage{ifthen}
-\usepackage{fp}
 
 \newboolean{mitWochenende}
 
@@ -156,7 +154,7 @@
 \definecolor{Deadline}{rgb}{0.8,0.25,0.25}
 \definecolor{CHausaufgaben}{rgb}{0.5,0.7,0.5}
 
-%% Definieren von Farbbefehler um die Farben leichter aufzurufen
+%% Definieren von Farbbefehlen, um die Farben leichter aufzurufen
 \newcommand{\CMathV}{CMathV}
 \newcommand{\CChemV}{CChemV}
 \newcommand{\CInfV}{CInfV}
@@ -168,7 +166,7 @@
 \newcommand{\CDeadline}{Deadline}
 \newcommand{\CPrivat}{CPrivat}
 
-%% Legendendefinierung sodass man sie mit richtiger Farbe und Text als Legende auf dem Stundenplan setzen kann.
+%% Legendendefinierung, sodass man sie mit richtiger Farbe und Text als Legende auf dem Stundenplan setzen kann.
 \newcommand{\Legende}[1]{\put(28,19){\makebox(0,0)[r]{#1}}}
 \newcommand{\LVorlEins}{\colorbox{\CChemV}{Che\strut}}
 \newcommand{\LVorlZwei}{\colorbox{\CInfV}{Inf\strut}}

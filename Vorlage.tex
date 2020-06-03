@@ -7,18 +7,20 @@
 \renewcommand{\planname}{UHH -- Computing in Science - FB Biochemie}
 
 \begin{document}
-  % Die Zeiten müssen jeweils in Minuten seit 08:00 angegeben werden...
-  % Beispiel 1: Vorlesung 1 ist 08:15-09:45 und dauert 90 Min -> "\VorlEins \montag {8}{15} {90}{Name - Vorlesung 1}"
-  % \<Veranstaltung> \<tag> {<Uhrzeit(HH)>}{<Uhrzeit(MM)>}{<Dauer(Min)>}{<Veranstaltungname>}
+  % Allgemeine Synatax: \<Veranstaltung> \<tag> {<Uhrzeit(HH)>}{<Uhrzeit(MM)>}{<Dauer(Min)>}{<Veranstaltungname>}
+  % Beispiel 1: Vorlesung 1 ist 08:15-09:45 und dauert 90 Min 
+  %    -> "\VorlEins \montag {8}{15} {90}{Name - Vorlesung 1}"
+  
   \begin{plan}
     \VorlEins \montag {8}{15} {90}{Name - Vorlesung 1}
     \VorlZwei \donnerstag {10}{15} {90}{Name - Vorlesung 2}
     \Deadline \dienstag {12}{00} {15}{Onlinetest - \href{www.test.de}{Link}}
     \VorlDrei \freitag {8}{15} {90}{Name - Vorlesung 2}
-    \Uebung \mittwoch {10}{15} {90}{Übung zu Vorlesung 1\\\ \\Lösung:\\ \href{mailto:max.mustermann@gmail.com}{E-Mail senden}}
+    \Uebung \mittwoch {10}{15} {90}{Übung zu Vorlesung 1\\\ \\Lösung:\\ \href{mailto:max.muster@informatik.uni-hamburg.de}{E-Mail senden}}
+	\Tutorium \freitag {12}{30} {45}{\LaTeX - Tutorium\\\href{https://github.com/JamesJux/Latex-Stundenplan}{Material}}
     
     \Privat \dienstag{17}{00} {120}{Fitnessstudio}
-    % Test der einzelnen möglichen Farbgebungen in der Legende
+    % Anzeigen der einzelnen möglichen Veranstaltungen in der Legende
     \Legende{\LVorlEins\LVorlZwei\LVorlDrei\LUebung\LTutorium\LSeminar\LPrivat}
   \end{plan}
 \end{document}
